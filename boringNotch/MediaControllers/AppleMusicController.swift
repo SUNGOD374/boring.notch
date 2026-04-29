@@ -135,8 +135,8 @@ class AppleMusicController: MediaControllerProtocol {
         
         updatedState.isPlaying = descriptor.atIndex(1)?.booleanValue ?? false
         updatedState.title = descriptor.atIndex(2)?.stringValue ?? "Unknown"
-        updatedState.artist = descriptor.atIndex(3)?.stringValue ?? "Unknown"
-        updatedState.album = descriptor.atIndex(4)?.stringValue ?? "Unknown"
+        updatedState.artist = descriptor.atIndex(3)?.stringValue ?? "--"
+        updatedState.album = descriptor.atIndex(4)?.stringValue ?? "--"
         updatedState.currentTime = descriptor.atIndex(5)?.doubleValue ?? 0
         updatedState.duration = descriptor.atIndex(6)?.doubleValue ?? 0
         updatedState.isShuffled = descriptor.atIndex(7)?.booleanValue ?? false
@@ -189,7 +189,7 @@ class AppleMusicController: MediaControllerProtocol {
                 set favoriteState to favorited of current track
                 return {playerState, currentTrackName, currentTrackArtist, currentTrackAlbum, trackPosition, trackDuration, shuffleState, repeatValue, currentVolume, artData, favoriteState}
             on error
-                return {false, "Not Playing", "Unknown", "Unknown", 0, 0, false, 0, 50, "", false}
+                return {false, "Not Playing", "--", "--", 0, 0, false, 0, 50, "", false}
             end try
         end tell
         """
